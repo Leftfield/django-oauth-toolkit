@@ -34,6 +34,7 @@ DEFAULTS = {
     'AUTHORIZATION_CODE_EXPIRE_SECONDS': 60,
     'ACCESS_TOKEN_EXPIRE_SECONDS': 36000,
     'APPLICATION_MODEL': 'oauth2_provider.Application',
+    'RESOURCE_MODEL': 'oauth2_provider.Resource',
 
     # Special settings that will be evaluated at runtime
     '_SCOPES': [],

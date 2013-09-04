@@ -112,6 +112,8 @@ class AbstractApplication(models.Model):
 class Application(AbstractApplication):
     pass
 
+class Resource(models.Model):
+    pass
 
 @python_2_unicode_compatible
 class Grant(models.Model):
@@ -135,6 +137,7 @@ class Grant(models.Model):
     expires = models.DateTimeField()
     redirect_uri = models.CharField(max_length=255)
     scope = models.TextField(blank=True)
+    resource = models.ForeignKey(oauth2_settings.RESOURCE_MODEL)
 
     def is_expired(self):
         """
@@ -169,6 +172,7 @@ class AccessToken(models.Model):
     application = models.ForeignKey(oauth2_settings.APPLICATION_MODEL)
     expires = models.DateTimeField()
     scope = models.TextField(blank=True)
+    resource = models.ForeignKey(oauth2_settings.RESOURCE_MODEL)
 
     def is_valid(self, scopes=None):
         """
